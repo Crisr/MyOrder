@@ -1,23 +1,41 @@
 'use strict';
 
 angular.module('myOrderApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
+  .controller('MainCtrl', function ($scope, angularFire) {
+  
     $scope.groups = [];
-  for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
-    };
-    for (var j=0; j<3; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }
+   
+   // Firebase URL
+    var URL = 'https://blazing-fire-6912.firebaseio.com/';
+
+    // Initialize Firebase
+    /*global Firebase*/
+    var ref = new Firebase(URL);
+    $scope.meniul = {};
+    var promise = angularFire(ref.child('/Meniul/'), $scope, 'meniul');
+  	promise.then(function()
+  	{
+  		var i = 0;
+  		for(var node_index in $scope.meniul)
+  			{
+  			console.log(node_index);
+  			$scope.groups[i] = {
+  				name: node_index,
+  				items: []
+  			};
+  			i++;
+  		}
+  	});
+
+  // for (var i=0; i<10; i++) {
+  //   $scope.groups[i] = {
+  //     name: i,
+  //     items: []
+  //   };
+  //   for (var j=0; j<3; j++) {
+  //     $scope.groups[i].items.push(i + '-' + j);
+  //   }
+  // }
   
   /*
    * if given group is the selected group, deselect it

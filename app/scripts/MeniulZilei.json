@@ -1,0 +1,13 @@
+{
+	"Meniul": {
+		"Aperitive": [
+			{"nume":"Salata de vinete", "pret":7},
+			{"nume":"Salata de boeuf", "pret":9}
+		],
+
+		"Supe": [
+			{"nume":"Supa de rosii", "pret":7},
+			{"nume":"Supa de post", "pret":8}
+		]
+	}
+}

@@ -1,7 +1,8 @@
 'use strict';
 
 angular
-  .module('myOrderApp', ['ionic']);
+  .module('myOrderApp', ['firebase', 'ionic']);
+ 
 
 var PhoneGapInit = function () {
   this.boot = function () {
